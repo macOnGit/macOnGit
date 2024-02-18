@@ -8,7 +8,7 @@ function SiteNav() {
     <Navbar bg="light" data-bs-theme="light" expand="lg">
       <Container>
         <Link className="navbar-brand" to="/">
-          Template Maker
+          QuickFields
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

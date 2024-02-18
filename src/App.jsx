@@ -19,18 +19,17 @@ function App() {
   });
   const [templates, setTemplates] = useState([
     {
-        "id": 1,
-        "template_name": "first template",
-        "template_text": "Hi there __!",
-        "template_author": "Fred"
+      id: 1,
+      template_name: 'first template',
+      template_text: 'Hi there __!',
+      template_author: 'Fred',
     },
     {
-        "id": 2,
-        "template_name": "second template",
-        "template_text": "Good Morning",
-        "template_author": "Anonymous"
-    }
-
+      id: 2,
+      template_name: 'second template',
+      template_text: 'Good Morning',
+      template_author: 'Anonymous',
+    },
   ]);
   const location = useLocation();
   return (
@@ -44,27 +43,51 @@ function App() {
           <Col>
             <Routes>
               <Route path="/" element={<Welcome />} />
-              <Route 
+              <Route
                 path="/compose"
-                element={<TemplateForm templates={templates} setTemplates={setTemplates} setToastData={setToastData} />}
+                element={
+                  <TemplateForm
+                    templates={templates}
+                    setTemplates={setTemplates}
+                    setToastData={setToastData}
+                  />
+                }
               />
               <Route path="/templates">
-                <Route index element={<TemplateTable templates={templates} />} />
+                <Route
+                  index
+                  element={<TemplateTable templates={templates} />}
+                />
                 <Route
                   path="/templates/:id"
-                  element={<Template templates={templates} setToastData={setToastData} />}
+                  element={
+                    <Template
+                      templates={templates}
+                      setToastData={setToastData}
+                    />
+                  }
                 />
                 <Route
                   path="/templates/:id/edit"
                   element={
-                    <TemplateForm templates={templates} setTemplates={setTemplates} setToastData={setToastData} forEditing />
+                    <TemplateForm
+                      templates={templates}
+                      setTemplates={setTemplates}
+                      setToastData={setToastData}
+                      forEditing
+                    />
                   }
                 />
               </Route>
               <Route path="/compiled" element={<pre>{location.state}</pre>} />
               <Route
                 path="/edit"
-                element={<TemplateTable templates={templates} loadTemplateEndpoint="edit" />}
+                element={
+                  <TemplateTable
+                    templates={templates}
+                    loadTemplateEndpoint="edit"
+                  />
+                }
               />
               <Route path="*" element={<NotFound />} />
             </Routes>

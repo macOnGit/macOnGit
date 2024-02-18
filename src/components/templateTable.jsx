@@ -5,11 +5,11 @@ import Table from 'react-bootstrap/Table';
 function TemplateTable({ loadTemplateEndpoint, templates }) {
   const navigate = useNavigate();
 
-  const loadTemplate = (id) => {
+  const loadTemplate = id => {
     navigate(
       `/templates/${id}${
         loadTemplateEndpoint ? `/${loadTemplateEndpoint}` : ''
-      }`
+      }`,
     );
   };
 
@@ -34,7 +34,7 @@ function TemplateTable({ loadTemplateEndpoint, templates }) {
               <td>{templateName}</td>
               <td>{templateAuthor}</td>
             </tr>
-          )
+          ),
         )}
       </tbody>
     </Table>

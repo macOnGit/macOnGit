@@ -4,7 +4,7 @@ const Welcome = () => (
   <>
     <Card bg="info" className="text-center">
       <Card.Title style={{ padding: '2rem' }} as="h1">
-        Welcome to the Template Maker!
+        Welcome QuickFields
       </Card.Title>
     </Card>
 
@@ -25,7 +25,7 @@ const Welcome = () => (
           Enter a name for your template and author (optional) then type in any
           text as you normaly would into the Template Text area. Where you want
           there to be a field simply type in two underscore characters. You can
-          have a many fields as you want. Click Submit when you're finished.
+          have a many fields as you want. Click Submit when you are finished.
         </p>
         <p>Example: The __ cat and the __ dog.</p>
       </Card.Body>

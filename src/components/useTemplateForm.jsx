@@ -45,7 +45,7 @@ const Template = ({ setToastData, templates }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const compiledText = allSpans.current.textContent;
     navigate('/compiled', { state: compiledText });
@@ -73,15 +73,15 @@ const Template = ({ setToastData, templates }) => {
   };
 
   useEffect(() => {
-    const template = templates.find((template_) => template_.id === parseInt(id))
+    const template = templates.find(template_ => template_.id === parseInt(id));
     if (!template) {
       setToastData({
         show: true,
         message: 'No such template',
         background: 'danger',
-        });
+      });
       navigate('/');
-      return
+      return;
     }
     setTemplateName(template.template_name);
     setSentence(template.template_text);
@@ -102,9 +102,9 @@ const Template = ({ setToastData, templates }) => {
                 </InputGroup.Text>
                 <Form.Control
                   value={v}
-                  onFocus={(e) => handleFocus(e, i)}
-                  onBlur={(e) => handleBlur(e, i)}
-                  onChange={(e) => handleChange(e, i)}
+                  onFocus={e => handleFocus(e, i)}
+                  onBlur={e => handleBlur(e, i)}
+                  onChange={e => handleChange(e, i)}
                 />
               </InputGroup>
             ))
@@ -120,7 +120,7 @@ const Template = ({ setToastData, templates }) => {
 
 Template.propTypes = {
   setToastData: PropTypes.func,
-  templates: PropTypes.array
+  templates: PropTypes.array,
 };
 
 export default Template;
