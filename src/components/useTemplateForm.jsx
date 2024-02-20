@@ -19,7 +19,7 @@ const spanWrap = (text, key, fieldNumber) => {
   );
 };
 
-const Template = ({ setToastData, templates }) => {
+const Template = ({ setToastData, templates, setModalShow, setModalData }) => {
   let spanKey = 0;
   let fieldNumber = 0;
   const { id } = useParams();
@@ -48,7 +48,11 @@ const Template = ({ setToastData, templates }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const compiledText = allSpans.current.textContent;
-    navigate('/compiled', { state: compiledText });
+    setModalData({
+      title: 'Compiled text for: ' + templateName,
+      body: compiledText,
+    })
+    setModalShow(true);
   };
 
   const parseText = (_sentence, _spans) => {
@@ -96,18 +100,18 @@ const Template = ({ setToastData, templates }) => {
       <Form onSubmit={handleSubmit}>
         {Array.isArray(fields)
           ? fields.map((v, i) => (
-              <InputGroup className="mb-3" key={i}>
-                <InputGroup.Text className="text-muted">
-                  field {i + 1}
-                </InputGroup.Text>
-                <Form.Control
-                  value={v}
-                  onFocus={e => handleFocus(e, i)}
-                  onBlur={e => handleBlur(e, i)}
-                  onChange={e => handleChange(e, i)}
-                />
-              </InputGroup>
-            ))
+            <InputGroup className="mb-3" key={i}>
+              <InputGroup.Text className="text-muted">
+                field {i + 1}
+              </InputGroup.Text>
+              <Form.Control
+                value={v}
+                onFocus={e => handleFocus(e, i)}
+                onBlur={e => handleBlur(e, i)}
+                onChange={e => handleChange(e, i)}
+              />
+            </InputGroup>
+          ))
           : null}
 
         <Button data-cy="submit" variant="primary" type="submit">
@@ -121,6 +125,8 @@ const Template = ({ setToastData, templates }) => {
 Template.propTypes = {
   setToastData: PropTypes.func,
   templates: PropTypes.array,
+  setModalShow: PropTypes.func,
+  setModalData: PropTypes.func,
 };
 
 export default Template;

@@ -4,7 +4,7 @@ const Welcome = () => (
   <>
     <Card bg="info" className="text-center">
       <Card.Title style={{ padding: '2rem' }} as="h1">
-        Welcome QuickFields
+        Welcome to QuickFields
       </Card.Title>
     </Card>
 

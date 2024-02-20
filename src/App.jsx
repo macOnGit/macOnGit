@@ -12,10 +12,16 @@ import AutoHideToast from './components/autoHideToast';
 import TemplateTable from './components/templateTable';
 import Template from './components/useTemplateForm';
 import NotFound from './components/notFound';
+import MyVerticallyCenteredModal from './components/modal';
 
 function App() {
   const [toastData, setToastData] = useState({
     show: false,
+  });
+  const [modalShow, setModalShow] = useState(false);
+  const [modalData, setModalData] = useState({
+    title: "this is a title",
+    body: "this is body text",
   });
   const [templates, setTemplates] = useState([
     {
@@ -35,6 +41,11 @@ function App() {
   return (
     <>
       <SiteNav />
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        modalData={modalData}
+      />
       <ToastContainer style={{ zIndex: 100 }} position="top-end">
         <AutoHideToast setToastData={setToastData} toastData={toastData} />
       </ToastContainer>
@@ -62,8 +73,10 @@ function App() {
                   path="/templates/:id"
                   element={
                     <Template
+                      setModalShow={setModalShow}
                       templates={templates}
                       setToastData={setToastData}
+                      setModalData={setModalData}
                     />
                   }
                 />
