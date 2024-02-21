@@ -3,22 +3,21 @@ import Card from 'react-bootstrap/Card';
 const Welcome = () => (
   <>
     <Card bg="info" className="text-center">
-      <Card.Title style={{ padding: '2rem' }} as="h1">
+      <Card.Title style={{ padding: '1rem' }} as="h1">
         Welcome to QuickFields
       </Card.Title>
     </Card>
 
-    <Card className="my-2" border="info">
+    <Card className="my-1" border="info">
       <Card.Header>Navigation</Card.Header>
       <Card.Body>
         <ul className="instructions">
-          <li>Click Use to generate text from an existing template.</li>
+          <li>Click Templates to generate text from an existing template.</li>
           <li>Click Compose to create a new template.</li>
-          <li>Click Edit to modify or delete an existing template.</li>
         </ul>
       </Card.Body>
     </Card>
-    <Card className="my-2" border="info">
+    <Card className="my-1" border="info">
       <Card.Header>Composing Templates</Card.Header>
       <Card.Body>
         <p>
@@ -30,7 +29,7 @@ const Welcome = () => (
         <p>Example: The __ cat and the __ dog.</p>
       </Card.Body>
     </Card>
-    <Card className="my-2" border="info">
+    <Card className="my-1" border="info">
       <Card.Header>Using Templates</Card.Header>
       <Card.Body>
         <p>
@@ -40,7 +39,7 @@ const Welcome = () => (
         </p>
       </Card.Body>
     </Card>
-    <Card className="my-2" border="info">
+    <Card className="my-1" border="info">
       <Card.Header>Editing Templates</Card.Header>
       <Card.Body>
         <p>

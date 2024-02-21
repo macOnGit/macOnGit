@@ -1,6 +1,5 @@
 # React + Vite
 
-TODO: indicate active page
 TODO: focus on fields
 TODO: check for junk code
 

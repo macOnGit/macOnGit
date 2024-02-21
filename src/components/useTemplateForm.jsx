@@ -49,7 +49,7 @@ const Template = ({ setToastData, templates, setModalShow, setModalData }) => {
     e.preventDefault();
     const compiledText = allSpans.current.textContent;
     setModalData({
-      title: 'Compiled text for: ' + templateName,
+      title: 'Text for: ' + templateName,
       body: compiledText,
     })
     setModalShow(true);

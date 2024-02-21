@@ -93,15 +93,6 @@ function App() {
                 />
               </Route>
               <Route path="/compiled" element={<pre>{location.state}</pre>} />
-              <Route
-                path="/edit"
-                element={
-                  <TemplateTable
-                    templates={templates}
-                    loadTemplateEndpoint="edit"
-                  />
-                }
-              />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Col>

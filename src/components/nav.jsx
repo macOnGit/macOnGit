@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function SiteNav() {
   return (
-    <Navbar bg="light" data-bs-theme="light" expand="lg">
+    <Navbar className="bg-body-tertiary mb-1" data-bs-theme="dark" expand="lg">
       <Container>
         <Link className="navbar-brand" to="/">
           QuickFields
@@ -17,13 +17,10 @@ function SiteNav() {
               Home
             </Link>
             <Link className="nav-link" data-cy="templates" to="/templates">
-              Use
+              Templates
             </Link>
             <Link className="nav-link" data-cy="compose" to="/compose">
               Compose
-            </Link>
-            <Link className="nav-link" data-cy="edit" to="/edit">
-              Edit
             </Link>
           </Nav>
         </Navbar.Collapse>
