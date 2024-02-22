@@ -19,7 +19,7 @@ const spanWrap = (text, key, fieldNumber) => {
   );
 };
 
-const Template = ({ setToastData, templates, setModalShow, setModalData }) => {
+const TemplateWithFields = ({ setToastData, templates, setModalShow, setModalData }) => {
   let spanKey = 0;
   let fieldNumber = 0;
   const { id } = useParams();
@@ -123,11 +123,11 @@ const Template = ({ setToastData, templates, setModalShow, setModalData }) => {
   );
 };
 
-Template.propTypes = {
+TemplateWithFields.propTypes = {
   setToastData: PropTypes.func,
   templates: PropTypes.array,
   setModalShow: PropTypes.func,
   setModalData: PropTypes.func,
 };
 
-export default Template;
+export default TemplateWithFields;

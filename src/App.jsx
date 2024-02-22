@@ -4,13 +4,13 @@ import Container from 'react-bootstrap/Container';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import TemplateForm from './components/composeTemplateForm';
+import { Route, Routes } from 'react-router-dom';
+import TemplateForm from './components/templateForm'
 import Welcome from './components/welcome';
 import SiteNav from './components/nav';
 import AutoHideToast from './components/autoHideToast';
 import TemplateTable from './components/templateTable';
-import Template from './components/useTemplateForm';
+import TemplateWithFields from './components/templateWithFields';
 import NotFound from './components/notFound';
 import MyVerticallyCenteredModal from './components/modal';
 
@@ -19,25 +19,15 @@ function App() {
     show: false,
   });
   const [modalShow, setModalShow] = useState(false);
-  const [modalData, setModalData] = useState({
-    title: "this is a title",
-    body: "this is body text",
-  });
+  const [modalData, setModalData] = useState({});
   const [templates, setTemplates] = useState([
     {
       id: 1,
-      template_name: 'first template',
-      template_text: 'Hi there __!',
-      template_author: 'Fred',
-    },
-    {
-      id: 2,
-      template_name: 'second template',
-      template_text: 'Good Morning',
+      template_name: 'Example Template',
+      template_text: 'Hi! My name is __. My favorite food is __.',
       template_author: 'Anonymous',
     },
   ]);
-  const location = useLocation();
   return (
     <>
       <SiteNav />
@@ -72,7 +62,7 @@ function App() {
                 <Route
                   path="/templates/:id"
                   element={
-                    <Template
+                    <TemplateWithFields
                       setModalShow={setModalShow}
                       templates={templates}
                       setToastData={setToastData}
@@ -92,7 +82,6 @@ function App() {
                   }
                 />
               </Route>
-              <Route path="/compiled" element={<pre>{location.state}</pre>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Col>

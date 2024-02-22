@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-const SharedTemplateForm = ({
+const TemplateForm = ({
   templates,
-  handleSubmit,
-  id,
+  setTemplates,
   setToastData,
   forEditing,
 }) => {
@@ -17,6 +16,8 @@ const SharedTemplateForm = ({
   const [templateAuthor, setTemplateAuthor] = useState('');
   const [templateText, setTemplateText] = useState('');
   const navigate = useNavigate();
+  const { id } = useParams();
+
   useEffect(() => {
     if (!id) return;
     const template = templates.find(template_ => template_.id === parseInt(id));
@@ -33,6 +34,79 @@ const SharedTemplateForm = ({
     setTemplateText(template.template_text);
     setTemplateAuthor(template.template_author);
   }, [id, setToastData, navigate, templates]);
+
+  const getNextHighestID = array => {
+    if (!array.length) {
+      return 1;
+    }
+    const ids = array.map(element => element.id);
+    const highestId = Math.max(...ids);
+    return highestId + 1;
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    const intID = parseInt(id);
+    if (id && isNaN(intID)) {
+      setToastData({
+        show: true,
+        message: 'No such template',
+        background: 'danger',
+      });
+      return navigate('/templates');
+    }
+
+    let actionMessage = 'Invalid action';
+
+    const deleteTemplate = event.nativeEvent.submitter?.value === 'delete';
+    const newTemplate = event.nativeEvent.submitter?.value === 'post';
+    const editTemplate = event.nativeEvent.submitter?.value === 'put';
+
+    const formEls = event.target.elements;
+    const template_name = formEls['template-name'].value;
+    const template_text = formEls['template-text'].value;
+    const template_author = formEls['template-author'].value || 'Anonymous';
+
+    if (deleteTemplate) {
+      setTemplates(templates.filter(template => template.id !== intID));
+      actionMessage = 'Template deleted!';
+    } else if (editTemplate) {
+      setTemplates(
+        templates.map(template => {
+          if (template.id === intID) {
+            return {
+              ...template,
+              template_name,
+              template_text,
+              template_author,
+            };
+          } else {
+            return template;
+          }
+        }),
+      );
+      actionMessage = 'Template Edited!';
+    } else if (newTemplate) {
+      const nextId = getNextHighestID(templates);
+      setTemplates([
+        ...templates,
+        {
+          id: nextId,
+          template_name,
+          template_text,
+          template_author,
+        },
+      ]);
+      actionMessage = 'Template Created!';
+    }
+    setToastData({
+      show: true,
+      message: actionMessage,
+      background:
+        deleteTemplate || editTemplate || newTemplate ? 'success' : 'danger',
+    });
+    return navigate('/templates');
+  };
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -101,12 +175,12 @@ const SharedTemplateForm = ({
     </Form>
   );
 };
-SharedTemplateForm.propTypes = {
+TemplateForm.propTypes = {
   templates: PropTypes.array,
-  handleSubmit: PropTypes.func,
+  setTemplates: PropTypes.func,
   setToastData: PropTypes.func,
   id: PropTypes.string,
   forEditing: PropTypes.bool,
 };
 
-export default SharedTemplateForm;
+export default TemplateForm;

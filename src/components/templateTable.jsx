@@ -35,7 +35,8 @@ function TemplateTable({ templates }) {
               <td>{id}</td>
               <td>{templateName}</td>
               <td>{templateAuthor}</td>
-              <td><Button variant="primary" size="sm" onClick={(e) => { e.stopPropagation(); editTemplate(id) }}>Edit</Button></td>
+              <td><Button variant="primary" size="sm"
+                onClick={(e) => { e.stopPropagation(); editTemplate(id) }}>Edit</Button></td>
             </tr>
           ),
         )}
