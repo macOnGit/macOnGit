@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { getNextHighestID } from '../utils';
 
 const TemplateForm = ({
   templates,
@@ -34,15 +35,6 @@ const TemplateForm = ({
     setTemplateText(template.template_text);
     setTemplateAuthor(template.template_author);
   }, [id, setToastData, navigate, templates]);
-
-  const getNextHighestID = array => {
-    if (!array.length) {
-      return 1;
-    }
-    const ids = array.map(element => element.id);
-    const highestId = Math.max(...ids);
-    return highestId + 1;
-  };
 
   const handleSubmit = event => {
     event.preventDefault();

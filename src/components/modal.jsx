@@ -2,14 +2,14 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
 
-function MyVerticallyCenteredModal({ show, onHide, modalData }) {
+function MyVerticallyCenteredModal({ onHide, modalData }) {
   return (
     <Modal
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
       onHide={onHide}
-      show={show}
+      show={modalData.show}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
@@ -27,7 +27,6 @@ function MyVerticallyCenteredModal({ show, onHide, modalData }) {
 }
 
 MyVerticallyCenteredModal.propTypes = {
-  show: PropTypes.bool,
   onHide: PropTypes.func,
   modalData: PropTypes.object,
 };

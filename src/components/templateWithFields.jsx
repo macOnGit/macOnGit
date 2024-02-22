@@ -5,21 +5,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import './useTemplateForm.css';
+import { spanWrap } from '../utils';
 
-const spanWrap = (text, key, fieldNumber) => {
-  const isField = typeof fieldNumber !== 'undefined';
-  return (
-    <span
-      key={key}
-      title={isField ? `field ${fieldNumber + 1}` : ''}
-      className={isField ? 'yellow-text' : ''}
-    >
-      {text}
-    </span>
-  );
-};
 
-const TemplateWithFields = ({ setToastData, templates, setModalShow, setModalData }) => {
+const TemplateWithFields = ({ setToastData, templates, setModalData }) => {
   let spanKey = 0;
   let fieldNumber = 0;
   const { id } = useParams();
@@ -51,8 +40,8 @@ const TemplateWithFields = ({ setToastData, templates, setModalShow, setModalDat
     setModalData({
       title: 'Text for: ' + templateName,
       body: compiledText,
+      show: true
     })
-    setModalShow(true);
   };
 
   const parseText = (_sentence, _spans) => {
@@ -126,7 +115,6 @@ const TemplateWithFields = ({ setToastData, templates, setModalShow, setModalDat
 TemplateWithFields.propTypes = {
   setToastData: PropTypes.func,
   templates: PropTypes.array,
-  setModalShow: PropTypes.func,
   setModalData: PropTypes.func,
 };
 

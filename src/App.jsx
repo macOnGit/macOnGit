@@ -18,13 +18,12 @@ function App() {
   const [toastData, setToastData] = useState({
     show: false,
   });
-  const [modalShow, setModalShow] = useState(false);
-  const [modalData, setModalData] = useState({});
+  const [modalData, setModalData] = useState({ show: false, });
   const [templates, setTemplates] = useState([
     {
       id: 1,
       template_name: 'Example Template',
-      template_text: 'Hi! My name is __. My favorite food is __.',
+      template_text: 'Hi! My name is __. I like __ and __.',
       template_author: 'Anonymous',
     },
   ]);
@@ -32,8 +31,7 @@ function App() {
     <>
       <SiteNav />
       <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={() => setModalData({ show: false })}
         modalData={modalData}
       />
       <ToastContainer style={{ zIndex: 100 }} position="top-end">
@@ -63,7 +61,6 @@ function App() {
                   path="/templates/:id"
                   element={
                     <TemplateWithFields
-                      setModalShow={setModalShow}
                       templates={templates}
                       setToastData={setToastData}
                       setModalData={setModalData}
