@@ -40,6 +40,7 @@ const SharedTemplateForm = ({
         <Form.Group as={Col} md="8" controlId="formTemplateName">
           <Form.Label>Template Name</Form.Label>
           <Form.Control
+            autoFocus
             autoComplete="off"
             required
             maxLength={50}

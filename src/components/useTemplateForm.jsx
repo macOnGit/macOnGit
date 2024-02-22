@@ -105,6 +105,7 @@ const Template = ({ setToastData, templates, setModalShow, setModalData }) => {
                 field {i + 1}
               </InputGroup.Text>
               <Form.Control
+                autoFocus={i == 0 ? true : false}
                 value={v}
                 onFocus={e => handleFocus(e, i)}
                 onBlur={e => handleBlur(e, i)}

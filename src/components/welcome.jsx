@@ -21,20 +21,18 @@ const Welcome = () => (
       <Card.Header>Composing Templates</Card.Header>
       <Card.Body>
         <p>
-          Enter a name for your template and author (optional) then type in any
-          text as you normaly would into the Template Text area. Where you want
-          there to be a field simply type in two underscore characters. You can
-          have a many fields as you want. Click Submit when you are finished.
+          Enter a name and author (optional) then enter
+          text in the Template Text area. Type two underscores to create a field.
+          Click Submit when finished.
         </p>
-        <p>Example: The __ cat and the __ dog.</p>
       </Card.Body>
     </Card>
     <Card className="my-1" border="info">
       <Card.Header>Using Templates</Card.Header>
       <Card.Body>
         <p>
-          Select a template from the list of templates then simply fill in each
-          field or not. A live preview is shown above the fields. Click Compile
+          Select a template then enter text into fields.
+          A live preview is shown above the fields. Click Compile
           to generate the text with the fields.
         </p>
       </Card.Body>
@@ -43,8 +41,8 @@ const Welcome = () => (
       <Card.Header>Editing Templates</Card.Header>
       <Card.Body>
         <p>
-          Select a template from the list of templates, make any needed edits,
-          then click Submit to save your edits or Delete to permanently remove
+          Select a template, click edit button,
+          then click Submit to save your edits or Delete to remove
           the template.
         </p>
       </Card.Body>
