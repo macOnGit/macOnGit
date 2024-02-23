@@ -19,8 +19,8 @@ function SiteNav() {
             <Link className="nav-link" data-cy="templates" to="/templates">
               Templates
             </Link>
-            <Link className="nav-link" data-cy="compose" to="/compose">
-              Compose
+            <Link className="nav-link" data-cy="create" to="/create">
+              Create
             </Link>
           </Nav>
         </Navbar.Collapse>

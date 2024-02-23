@@ -13,7 +13,7 @@ const Welcome = () => (
       <Card.Body>
         <ul className="instructions">
           <li>Click Templates to generate text from or edit an existing template.</li>
-          <li>Click Compose to create a new template.</li>
+          <li>Click Create to create a new template.</li>
         </ul>
       </Card.Body>
     </Card>

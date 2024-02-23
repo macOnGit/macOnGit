@@ -43,7 +43,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Welcome />} />
               <Route
-                path="/compose"
+                path="/create"
                 element={
                   <TemplateForm
                     templates={templates}
