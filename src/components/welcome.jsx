@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card';
+import { Row, Col, Container } from 'react-bootstrap';
 
 const Welcome = () => (
   <>
@@ -47,6 +48,13 @@ const Welcome = () => (
         </p>
       </Card.Body>
     </Card>
+    <Container className='footer'>
+      <Row className="justify-content-md-center">
+        <Col md="auto">
+          <a href='https://github.com/macOnGit/macongit.github.io'>See the code on GitHub</a>
+        </Col>
+      </Row>
+    </Container>
   </>
 );
 
